@@ -34,10 +34,30 @@ app.use(express.json());
  */
 
 app.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`);
+	console.log(`APP rodando na porta ${PORT}`);
+	let readlineSync = require('readline-sync');
+	let qtdAluno = parseInt(readlineSync.question(' Quantos alunos tem ? '));
+
+	let maiorNota = 0;
+	let alunoMaiorNota
+
+	for (let i = 0; i < qtdAluno; i++) {
+		let nome = readlineSync.question('Nome do aluno e :');
+		let nota = parseFloat(readlineSync.question(' A nota do aluno e : '));	// Executa 5 vezes, com os valores de passos de 0 a 4.
+		if (maiorNota < nota) {
+			maiorNota = nota
+			alunoMaiorNota = nome
+		}
+
+	}
+
+	console.log(` Aluno com a maior nota é ${alunoMaiorNota} e a nota é ${maiorNota}`);
+
+
+
 
 
 	// CÓDIGO PARA ATENDER OS REQUERIMENTOS
 	// R01, R02, R03, R04, R05
-	
+
 });
